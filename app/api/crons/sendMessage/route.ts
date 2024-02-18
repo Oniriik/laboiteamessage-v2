@@ -50,3 +50,5 @@ const sendMessage = async (): Promise<NextResponse | void> => {
 };
 
 export { sendMessage as GET };
+
+export const dynamic = 'force-dynamic';

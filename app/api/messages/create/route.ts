@@ -47,3 +47,4 @@ const createMessage = async (req:NextRequest): Promise<NextResponse | void> => {
 };
 
 export { createMessage as POST, createMessage as GET };
+export const dynamic = 'force-dynamic';
