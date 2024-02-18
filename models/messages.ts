@@ -1,5 +1,4 @@
 import mongoose, { Schema, Model, Document } from 'mongoose';
-import { v4 as uuidv4 } from 'uuid';
 
 export interface IMessagePayload {
   email: string;
@@ -24,7 +23,6 @@ const messagesSchema = new Schema<IMessage>(
       type: String,
       unique: true,
       required: true,
-      default: () => `msg_${uuidv4()}`,
     },
     email: {
       type: String,
