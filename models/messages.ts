@@ -15,6 +15,7 @@ export interface IMessage extends Document, IMessagePayload {
   _id: string;
   createdAt: Date;
   updatedAt: Date;
+  status: 'pending' | 'processing' | 'sent' | 'failed';
 }
 
 const messagesSchema = new Schema<IMessage>(
@@ -46,6 +47,12 @@ const messagesSchema = new Schema<IMessage>(
         type: String,
         required: true,
       },
+    },
+    status: {
+      type: String,
+      enum: ['pending', 'processing', 'sent', 'failed'],
+      required: true,
+      default: 'pending',
     },
   },
   {
