@@ -10,6 +10,7 @@ import {
 
 } from '@ant-design/icons';
 
+import { IMessagePayload } from '@/models';
 import { MdOutlineEmail } from 'react-icons/md';
 import { useEffect, useState } from 'react';
 import * as Styled from './messageForm.styled';
@@ -21,15 +22,20 @@ const defaultOptions = {
   fastDelivery: false,
 };
 
-interface IData {
-  email: string;
-  recipient: string;
-  message: string;
-  ip: string;
-}
+const createMessage = async (data: IMessagePayload) => {
+  const response = await fetch('/api/messages/create', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify(data),
+  }).then((res) => res.json()).catch((err) => {
+    console.error(err);
+  });
 
-const createMessage = (data: IData) => {
-  console.log(data);
+  if (response?._id) {
+    window.location.href = `/messages/${response._id}`;
+  }
 };
 
 export const MessageForm = () => {
