@@ -38,6 +38,7 @@ const createMessage = async (req:NextRequest): Promise<NextResponse | void> => {
     to: data.email,
     subject: 'Ton message est en cours de traitement',
     html: renderHtmlEmail('pendingMessage', { link: `https://loveletter.bot/${message._id}` }),
+    text: `Ton message est en cours de traitement. Tu peux le voir ici : https://loveletter.bot/${message._id}`,
   };
 
   sendEmail(email);

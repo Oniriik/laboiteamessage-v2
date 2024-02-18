@@ -8,6 +8,7 @@ const sendMessage = async (): Promise<NextResponse | void> => {
     to: 'timot5924@gmail.com',
     subject: 'Ton message a John Doe a été posté',
     html: renderHtmlEmail('sentMessage', { text: 'Salut ca va ?', link: 'https://loveletter.bot' }),
+    text: 'Ton message a John Doe a été posté. Tu peux le voir ici : https://loveletter.bot',
   };
 
   sendEmail(message);
