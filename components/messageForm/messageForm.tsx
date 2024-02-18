@@ -16,8 +16,6 @@ import * as Styled from './messageForm.styled';
 
 const { TextArea } = Input;
 
-type OptionKeys = 'longMessage' | 'fastDelivery';
-
 const defaultOptions = {
   longMessage: false,
   fastDelivery: false,

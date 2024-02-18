@@ -17,6 +17,7 @@ export const HomePage = styled.div`
         background-clip: text;
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
+        user-select: none;
     }
 
     h2{
@@ -30,5 +31,11 @@ export const HomePage = styled.div`
         background-clip: text;
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
+        user-select: none;
+
+    }
+
+    * {
+        user-select: none;
     }
 `;

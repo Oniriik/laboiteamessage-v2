@@ -14,7 +14,7 @@ const AntDRegistry = ({ children }: React.PropsWithChildren) => {
       return;
     }
     isServerInserted.current = true;
-    // eslint-disable-next-line consistent-return
+    // eslint-disable-next-line consistent-return, react/no-danger
     return <style id="antd" dangerouslySetInnerHTML={{ __html: extractStyle(cache, true) }} />;
   });
   return <StyleProvider cache={cache}>{children}</StyleProvider>;
