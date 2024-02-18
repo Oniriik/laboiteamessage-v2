@@ -2,6 +2,7 @@
 import { NextResponse, NextRequest } from 'next/server';
 import { connectMongoDB } from '@/lib/mongodb';
 import { Messages, IMessagePayload } from '@/models';
+import { renderHtmlEmail, sendEmail } from '@/emails/email';
 
 const createMessage = async (req:NextRequest): Promise<NextResponse | void> => {
   const data: IMessagePayload = await req.json().catch((err: any) => {
@@ -31,6 +32,15 @@ const createMessage = async (req:NextRequest): Promise<NextResponse | void> => {
       message: 'Error creating message',
     });
   }
+
+  const email = {
+    from: 'notification@loveletter.bot',
+    to: data.email,
+    subject: 'Ton message est en cours de traitement',
+    html: renderHtmlEmail('pendingMessage', { link: `https://loveletter.bot/${message._id}` }),
+  };
+
+  sendEmail(email);
 
   return NextResponse.json(message);
 };
