@@ -43,7 +43,7 @@ const createMessage = async (req:NextRequest): Promise<NextResponse | void> => {
 
   sendEmail(email);
 
-  return NextResponse.json(message);
+  return NextResponse.json(message || { ok: false, message: 'Error creating message' });
 };
 
 export { createMessage as POST, createMessage as GET };

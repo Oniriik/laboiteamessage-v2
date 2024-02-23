@@ -19,11 +19,6 @@ export interface IMessage extends Document, IMessagePayload {
 
 const messagesSchema = new Schema<IMessage>(
   {
-    _id: {
-      type: String,
-      unique: true,
-      required: true,
-    },
     email: {
       type: String,
       required: true,

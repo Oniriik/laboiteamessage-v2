@@ -49,6 +49,6 @@ const sendMessage = async (): Promise<NextResponse | void> => {
   return NextResponse.json(posts);
 };
 
-export { sendMessage as GET };
+export { sendMessage as GET, sendMessage as POST };
 
 export const dynamic = 'force-dynamic';
