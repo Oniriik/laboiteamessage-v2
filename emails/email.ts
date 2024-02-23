@@ -26,13 +26,12 @@ export const renderHtmlEmail = (templateName:string, variables:{ [key:string]: s
   return content;
 };
 
-// Create a SMTP transporter object
 const transporter = nodemailer.createTransport({
-  host: 'mail.privateemail.com', // Namecheap Private Email SMTP server
-  port: 465, // Secure SMTP port
-  secure: true, // true for 465, false for other ports
+  host: 'smtp.eu.mailgun.org',
+  port: 587,
+  secure: true,
   auth: {
-    user: 'notifications@loveletter.bot', // Your full email address
+    user: 'postmaster@mg.loveletter.bot',
     pass: process.env.MAIL_PASS,
   },
 });
