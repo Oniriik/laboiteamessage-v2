@@ -37,8 +37,8 @@ const createMessage = async (req:NextRequest): Promise<NextResponse | void> => {
     from: 'Love letter <notification@loveletter.bot>',
     to: data.email,
     subject: 'Ton message est en cours de traitement',
-    html: renderHtmlEmail('htmlPendingMessage', { link: `https://loveletter.bot/${message._id}` }),
-    text: renderHtmlEmail('textPendingMessage', { link: `https://loveletter.bot/${message._id}` }),
+    html: renderHtmlEmail('htmlPendingMessage', { link: `https://loveletter.bot/messages/${message._id}` }),
+    text: renderHtmlEmail('textPendingMessage', { link: `https://loveletter.bot/messages/${message._id}` }),
   };
 
   sendEmail(email);
