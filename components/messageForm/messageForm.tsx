@@ -42,7 +42,7 @@ export const MessageForm = () => {
   const [userIp, setUserIp] = useState({ ip: 'unknown', country: 'unknown' });
   const [options] = useState(defaultOptions);
   const [form] = Form.useForm();
-
+  const [loading, setLoading] = useState(false);
   useEffect(() => {
     if (process.env.NODE_ENV === 'development') return;
     fetch(`https://api.ipdata.co/?api-key=${process.env.IP_RESOLVER_KEY}`).then(async (res) => {
@@ -65,7 +65,14 @@ export const MessageForm = () => {
         name="messageForm"
         onFinish={
           (values) => {
+            setLoading(true);
             createMessage({ ...values, userData: userIp });
+            setTimeout(
+              () => {
+                setLoading(false);
+              },
+              3000,
+            );
           }
         }
         autoComplete="on"
@@ -158,6 +165,7 @@ export const MessageForm = () => {
               type="primary"
               htmlType="submit"
               size="large"
+              disabled={loading}
             >
               Envoyer
             </Button>

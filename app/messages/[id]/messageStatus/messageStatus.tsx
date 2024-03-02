@@ -6,6 +6,7 @@ import {
 import * as Styled from './messageStatus.styled';
 
 export const MessageStatus = ({ status }:{ status:string | undefined }) => {
+  console.log(status);
   const currentStatus = useMemo(() => {
     switch (status) {
       case 'pending':
@@ -21,23 +22,30 @@ export const MessageStatus = ({ status }:{ status:string | undefined }) => {
 
   return (
     <Styled.MessageStatus>
-      <Steps
-        current={currentStatus}
-        items={[
-          {
-            title: 'Message reçu',
-            icon: <IdcardOutlined />,
-          },
-          {
-            title: currentStatus === 1 ? 'En cours d\'envoi' : 'Envoi',
-            icon: currentStatus === 1 ? <LoadingOutlined /> : <SendOutlined />,
-          },
-          {
-            title: 'Envoyé',
-            icon: <InboxOutlined />,
-          },
-        ]}
-      />
+      {status !== 'canceled' && (
+        <Steps
+          current={currentStatus}
+          items={[
+            {
+              title: 'Message reçu',
+              icon: <IdcardOutlined />,
+            },
+            {
+              title: currentStatus === 1 ? 'En cours d\'envoi' : 'Envoi',
+              icon: currentStatus === 1 ? <LoadingOutlined /> : <SendOutlined />,
+            },
+            {
+              title: 'Envoyé',
+              icon: <InboxOutlined />,
+            },
+          ]}
+        />
+      )}
+      {
+        status === 'canceled' && (
+          <span className="canceled">Message annulé</span>
+        )
+      }
     </Styled.MessageStatus>
 
   );

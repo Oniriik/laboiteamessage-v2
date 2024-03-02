@@ -43,7 +43,7 @@ const messagesSchema = new Schema<IMessage>(
     },
     status: {
       type: String,
-      enum: ['pending', 'processing', 'sent', 'failed'],
+      enum: ['pending', 'processing', 'sent', 'failed', 'canceled'],
       required: true,
       default: 'pending',
     },

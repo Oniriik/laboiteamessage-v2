@@ -14,7 +14,7 @@ export default function Message({ params }: { params: { id: string } }) {
   const [isLoading, setIsLoading] = useState(true);
   const [data, setData] = useState<IMessage | null>(null);
   const [error, setError] = useState(null);
-
+  const [canceling, setCanceling] = useState(false);
   useEffect(() => {
     fetch(`/api/messages/${params.id}`)
       .then((res) => res.json())
@@ -32,6 +32,21 @@ export default function Message({ params }: { params: { id: string } }) {
       });
   }, [params.id]);
 
+  const cancelMessage = async () => {
+    try {
+      setCanceling(true);
+      const response = await fetch(`/api/messages/${params.id}/cancel`, {
+        method: 'POST',
+      }).then((res) => res.json());
+      console.log(response);
+      setData(response);
+      setCanceling(false);
+    } catch (err) {
+      setCanceling(false);
+      console.error(err);
+    }
+  };
+
   return (
     <Page>
       {isLoading && <Loader />}
@@ -44,8 +59,11 @@ export default function Message({ params }: { params: { id: string } }) {
             </div>
             <MessageStatus status={data?.status} />
             <MessageCard message={data} />
-
-            <Button type="primary" href="/">Annuler le message</Button>
+            {data?.status === 'pending' && (
+              <Button type="primary" onClick={cancelMessage} disabled={canceling}>
+                Annuler le message
+              </Button>
+            )}
           </div>
           <div>
             Les notifications à propos du message seront envoyées à
