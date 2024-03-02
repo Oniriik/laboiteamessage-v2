@@ -13,7 +13,7 @@ html{
 }
 
 body{
-    height: 100vh;
+    height: 100dvh;
     background: linear-gradient(180deg, #FBF0EE 0%, #DBC0BA 100%) no-repeat;
     scroll-behavior: smooth
 }
