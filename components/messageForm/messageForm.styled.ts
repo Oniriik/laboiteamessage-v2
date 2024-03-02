@@ -14,4 +14,9 @@ export const MessageForm = styled.div`
         overflow-x: hidden;
         word-wrap: break-word;
     }
+
+     @media (max-width: 768px) {
+        width: 90%;
+    }
+
 `;
