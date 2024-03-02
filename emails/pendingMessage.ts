@@ -1,4 +1,4 @@
-export default `<!DOCTYPE HTML PUBLIC "-//W3C//DTD XHTML 1.0 Transitional //EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+export const htmlPendingMessage = `<!DOCTYPE HTML PUBLIC "-//W3C//DTD XHTML 1.0 Transitional //EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:v="urn:schemas-microsoft-com:vml" xmlns:o="urn:schemas-microsoft-com:office:office">
 <head>
 <!--[if gte mso 9]>
@@ -125,7 +125,7 @@ table, td { color: #000000; } #u_body a { color: #0000ee; text-decoration: under
       <td class="v-container-padding-padding" style="overflow-wrap:break-word;word-break:break-word;padding:61px 10px 10px;font-family:'Raleway',sans-serif;" align="left">
         
   <div class="v-text-align v-font-size" style="font-family: 'Playfair Display',serif; font-size: 30px; color: #580000; line-height: 120%; text-align: center; word-wrap: break-word;">
-    <p style="line-height: 120%;"><strong>Un message est préparation</strong></p>
+    <p style="line-height: 120%;"><strong>Ton message est préparation</strong></p>
   </div>
 
       </td>
@@ -252,3 +252,5 @@ table, td { color: #000000; } #u_body a { color: #0000ee; text-decoration: under
 </body>
 
 </html>`;
+
+export const textPendingMessage = 'Un message est préparation.\nNous avons bien reçu la demande de message !\nIl est en attente de traitement.\n\nVoir le status: {{link}}';

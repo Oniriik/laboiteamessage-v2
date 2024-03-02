@@ -34,11 +34,11 @@ const createMessage = async (req:NextRequest): Promise<NextResponse | void> => {
   }
 
   const email = {
-    from: 'notification@loveletter.bot',
+    from: 'Love letter <notification@loveletter.bot>',
     to: data.email,
     subject: 'Ton message est en cours de traitement',
-    html: renderHtmlEmail('pendingMessage', { link: `https://loveletter.bot/${message._id}` }),
-    text: `Ton message est en cours de traitement. Tu peux le voir ici : https://loveletter.bot/${message._id}`,
+    html: renderHtmlEmail('htmlPendingMessage', { link: `https://loveletter.bot/${message._id}` }),
+    text: renderHtmlEmail('textPendingMessage', { link: `https://loveletter.bot/${message._id}` }),
   };
 
   sendEmail(email);

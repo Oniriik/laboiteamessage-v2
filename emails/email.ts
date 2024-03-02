@@ -1,5 +1,5 @@
 import sentMessage from './sentMessage';
-import pendingMessage from './pendingMessage';
+import { htmlPendingMessage, textPendingMessage } from './pendingMessage';
 
 const nodemailer = require('nodemailer');
 
@@ -7,7 +7,8 @@ const templates:{
   [key:string]: string
 } = {
   sentMessage,
-  pendingMessage,
+  htmlPendingMessage,
+  textPendingMessage,
 };
 
 const replaceAll = (text:string, search:string, replacement:string) => {
@@ -26,12 +27,13 @@ export const renderHtmlEmail = (templateName:string, variables:{ [key:string]: s
   return content;
 };
 
+// Create a SMTP transporter object
 const transporter = nodemailer.createTransport({
-  host: 'smtp.eu.mailgun.org',
-  port: 587,
-  secure: true,
+  host: 'mail.privateemail.com', // Namecheap Private Email SMTP server
+  port: 465, // Secure SMTP port
+  secure: true, // true for 465, false for other ports
   auth: {
-    user: 'postmaster@mg.loveletter.bot',
+    user: 'notifications@loveletter.bot', // Your full email address
     pass: process.env.MAIL_PASS,
   },
 });

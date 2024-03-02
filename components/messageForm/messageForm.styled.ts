@@ -9,15 +9,9 @@ export const MessageForm = styled.div`
 
     width: 400px;   
 
-
-
- 
-
     textarea{
         white-space: break-spaces;
         overflow-x: hidden;
         word-wrap: break-word;
     }
-    
-  
 `;
